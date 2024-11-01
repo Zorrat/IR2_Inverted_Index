@@ -442,9 +442,6 @@ def daat_and(processed_queries, inverted_index):
         query_terms = p_query.split()
         pl = [ inverted_index[token] if token in inverted_index else LinkedList() for token in query_terms]
         pl = sorted(pl, key=lambda x: x.length)  # Sort by length to minimize comparisons
-
-        if len(pl) == 0:
-            continue
         
         # Sort postings lists by length to minimize comparisons
         total_comparisons = 0
