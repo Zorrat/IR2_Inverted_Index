@@ -41,14 +41,12 @@ def execute_query(queries: dict):
     return r
 
 
-    
-
 if __name__ == "__main__":
 
     docs = OrderedDict()
     with open("input_corpus.txt") as f:
         documents = f.readlines()
-        
+
     for i, doc in enumerate(documents):
         doc = doc.strip().split("\t")
         docs[int(doc[0])] = doc[1]
@@ -62,5 +60,3 @@ if __name__ == "__main__":
 
 
     uvicorn.run(app, host="0.0.0.0", port=9999)
-
-

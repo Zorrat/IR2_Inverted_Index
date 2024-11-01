@@ -148,7 +148,6 @@ class LinkedList:
         comparisons = 0
 
         while p1 and p2:
-            
             comparisons += 1
             
             if p1.value == p2.value:
@@ -159,8 +158,6 @@ class LinkedList:
                 if p1.skip and p1.skip.value <= p2.value:
                     # comparisons += 1  # Comparison before taking skip
                     # p1 = p1.skip
-                    
-
                     while p1.skip and p1.skip.value <= p2.value:
                         # comparisons += 1
                         p1 = p1.skip
@@ -175,8 +172,6 @@ class LinkedList:
                         p2 = p2.skip
                 else:
                     p2 = p2.next
-
-            
 
         result.add_skip_connections()
 
@@ -275,16 +270,6 @@ class Indexer():
         self.sort_inverted_index()
         self.add_skip_connections()
         self.compute_doc_tf_idf()
-
-    # def build_inverted_index(self, docs):
-    #     for doc_id, text in docs.items():
-    #         for term in text.split():
-    #             if term not in self.inverted_index:
-    #                 self.inverted_index[term] = LinkedList()
-    #             # Append only if the document ID is not already present in the term's postings list
-    #             current_postings_list = self.inverted_index[term]
-    #             if current_postings_list.head is None or doc_id not in current_postings_list.to_list():
-    #                 current_postings_list.append(doc_id)
 
 
     def build_inverted_index(self, docs):
