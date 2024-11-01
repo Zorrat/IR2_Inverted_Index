@@ -97,19 +97,6 @@ class LinkedList:
             current_node = skip_target
             skips_added += 1
 
-        # while skip_target:
-        #     for _ in range(self.skip_length):
-        #         if skip_target:
-        #             skip_target = skip_target.next
-        #         else:
-        #             break
-        #     current_node.skip = skip_target
-            
-        #     current_node = skip_target
-
-        
-
-
     
 
     def append(self, value,tf_idf=None):
@@ -117,29 +104,7 @@ class LinkedList:
             Insert the element at an appropriate position, such that elements to the left are lower than the inserted
             element, and elements to the right are greater than the inserted element.
             To be implemented. """
-        # Check if the linked list is empty
-        # if self.head is None:
-        #     self.head = Node(value, tf_idf=tf_idf)
-        #     self.end_node = self.head
-        #     self.length += 1
-        #     return
 
-        # # Traverse the list to check for the document ID
-        # current = self.head
-        # while current:
-        #     if current.value == value:
-        #         return  # Document ID already exists, skip addition
-        #     if current.next is None:
-        #         break
-        #     current = current.next
-        
-        # # Append new node if document ID is not found
-        # new_node = Node(value, tf_idf=tf_idf)
-        # current.next = new_node
-        # self.end_node = new_node
-        # self.length += 1
-
-        ############################
         new_node = Node(value,tf_idf=tf_idf)
         if self.head is None:
             self.head = new_node
@@ -183,6 +148,7 @@ class LinkedList:
         comparisons = 0
 
         while p1 and p2:
+            
             comparisons += 1
             
             if p1.value == p2.value:
@@ -191,21 +157,21 @@ class LinkedList:
                 p2 = p2.next
             elif p1.value < p2.value:
                 if p1.skip and p1.skip.value <= p2.value:
-                    comparisons += 1  # Comparison before taking skip
+                    # comparisons += 1  # Comparison before taking skip
                     # p1 = p1.skip
                     
 
                     while p1.skip and p1.skip.value <= p2.value:
-                        comparisons += 1
+                        # comparisons += 1
                         p1 = p1.skip
                 else:
                     p1 = p1.next
             else:
                 if p2.skip and p2.skip.value <= p1.value:
-                    comparisons += 1  # Comparison before taking skip
+                    # comparisons += 1  # Comparison before taking skip
                     # p2 = p2.skip
                     while p2.skip and p2.skip.value <= p1.value:
-                        comparisons += 1
+                        # comparisons += 1
                         p2 = p2.skip
                 else:
                     p2 = p2.next

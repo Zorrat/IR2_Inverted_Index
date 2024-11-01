@@ -2,8 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 from collections import OrderedDict
 from utils import get_query_postings, daat_and, daat_and_with_skip, daat_and_tfidf, daat_and_skip_tfidf,get_query_postings_skips
-import requests
-from utils import LinkedList,Indexer,Preprocessor
+from utils import Indexer,Preprocessor
 import time
 
 app = FastAPI()
