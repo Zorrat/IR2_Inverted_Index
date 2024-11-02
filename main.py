@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 import uvicorn
 from collections import OrderedDict
-from utils import get_query_postings, daat_and, daat_and_with_skip, daat_and_tfidf, daat_and_skip_tfidf,get_query_postings_skips
-from utils import Indexer,Preprocessor
+from src.utils import get_query_postings, daat_and, daat_and_with_skip, daat_and_tfidf, daat_and_skip_tfidf,get_query_postings_skips
+from src.utils import Indexer,Preprocessor
 import time
 
 app = FastAPI()
@@ -44,7 +44,7 @@ def execute_query(queries: dict):
 if __name__ == "__main__":
 
     docs = OrderedDict()
-    with open("input_corpus.txt") as f:
+    with open("src/input_corpus.txt") as f:
         documents = f.readlines()
 
     for i, doc in enumerate(documents):
@@ -59,4 +59,4 @@ if __name__ == "__main__":
     inverted_index = indexer.get_inverted_index()
 
 
-    uvicorn.run(app, host="0.0.0.0", port=9999)
+    uvicorn.run(app, host="0.0.0.0", port=9999,timeout_keep_alive=1000000,timeout_graceful_shutdown=1000000)
